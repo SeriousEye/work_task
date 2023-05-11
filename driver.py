@@ -2,18 +2,20 @@ from selenium import webdriver
 from selenium.webdriver.common.by import By
 from selenium.webdriver.common.action_chains import ActionChains
 
+#https://habr.com/ru/articles/472156/
 
-class Driver():
+class Driver:
     """Запускает драйвер для браузера Chrome."""
 
-    def __init__(self, url):
+    def __init__(self, url, driver):
+        self.driver = driver
         self.url = url
-        self.driver = webdriver.Chrome()
+        # self.driver = webdriver.Chrome()
         self.open_page()
 
     def open_page(self):
         """Открывает страницу переданную в объект драйвера."""
-        self.driver.get(self.url)
+        return self.driver.get(self.url)
 
     def get_element(self, locator):
         """Возвращает элемент по CSS селектору."""
